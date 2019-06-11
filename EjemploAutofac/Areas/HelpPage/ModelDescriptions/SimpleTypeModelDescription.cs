@@ -1,0 +1,6 @@
+namespace EjemploAutofac.Areas.HelpPage.ModelDescriptions
+{
+    public class SimpleTypeModelDescription : ModelDescription
+    {
+    }
+}
