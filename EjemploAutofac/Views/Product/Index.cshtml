@@ -1,10 +1,10 @@
-﻿@model IEnumerable<EjemploAutofac.Models.ProductModel>
+﻿@model IEnumerable<Entities.ProductModel>
 
 
 <h2>Index</h2>
 
 <ul>
-    @foreach (EjemploAutofac.Models.ProductModel p in Model)
+    @foreach (Entities.ProductModel p in Model)
     {
         <li>@p.Name</li>
     }

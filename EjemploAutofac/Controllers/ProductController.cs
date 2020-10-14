@@ -1,8 +1,4 @@
-﻿using EjemploAutofac.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Services;
 using System.Web.Mvc;
 
 namespace EjemploAutofac.Controllers

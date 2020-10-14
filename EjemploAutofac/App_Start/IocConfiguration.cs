@@ -1,8 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
-using EjemploAutofac.Interfaces;
-using EjemploAutofac.Repositories;
-using EjemploAutofac.Services;
+using Services;
 using System.Reflection;
 using System.Web.Mvc;
 
@@ -21,12 +19,16 @@ namespace EjemploAutofac.App_Start
         {
             var builder = new ContainerBuilder();
 
-            RegisterRepositories(builder);
+            //RegisterRepositories(builder);
             RegisterServices(builder);
             RegisterControllers(builder);
 
+            //registrar las servicios, repositorios de otras capas/proyectos de la solución
+            builder.RegisterModule<ServiceModule>();
+
             Container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(Container));
+            
         }
 
         private static void RegisterServices(ContainerBuilder builder)
@@ -34,10 +36,10 @@ namespace EjemploAutofac.App_Start
             builder.RegisterType<ProductService>().As<IProductService>().SingleInstance();
         }
 
-        private static void RegisterRepositories(ContainerBuilder builder)
-        {
-            builder.RegisterType<ProductRepository>().As<IProductRepository>().SingleInstance();
-        }
+        //private static void RegisterRepositories(ContainerBuilder builder)
+        //{
+        //    builder.RegisterType<ProductRepository>().As<IProductRepository>().SingleInstance();
+        //}
 
         private static void RegisterControllers(ContainerBuilder builder)
         {
